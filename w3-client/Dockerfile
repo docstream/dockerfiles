@@ -1,7 +1,6 @@
 FROM docstream/nix-base:latest
 MAINTAINER Dynnamitt
 
-# div.xml + m4/make
 RUN apt-get update -yy && \
-  apt-get install -yy make m4 xsltproc libxml2-utils && \
+  apt-get install -yy jq && \
   apt-get clean
