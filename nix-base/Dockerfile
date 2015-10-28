@@ -10,10 +10,13 @@ RUN DEBIAN_FRONTEND=noninteractive \
 # Common ENVs
 ENV VCS_DIR /var/vcs
 ENV BUILD_DIR /var/build
-ENV MSG_HOST messages
-ENV MSG_MAIN_CHANNEL ds-events
-ENV MSG_BBPOST_Q_PREFIX ds-bbpost.
-ENV MSG_PULLED_Q_PREFIX ds-vcs-pulled.
+
+# sync w globals- in do-ctl
+ENV REDIS_INTRA_HOST messages
+ENV REDIS_MAIN_CH ds-events
+ENV SOLR_POST_URL http://solr:8983/solr/$FQDN/update
+ENV SOLR_QUERY_URL http://solr:8983/solr/_FQDN_/select
+ENV REDIS_PULLED_NS ds-vcs-pulled
 
 # Common
 ONBUILD COPY . /opt/app
