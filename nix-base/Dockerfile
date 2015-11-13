@@ -5,7 +5,9 @@ MAINTAINER Dynnamitt
  
 # git + redis + parallel
 RUN DEBIAN_FRONTEND=noninteractive \
-  apt-get install -yy redis-tools git parallel gawk
+  apt-get update -yy && \
+  apt-get install -yy redis-tools git parallel gawk && \
+  rm -rf /tmp/* && apt-get clean
 
 # Common ENVs
 ENV VCS_DIR /var/vcs
