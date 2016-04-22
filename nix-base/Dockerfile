@@ -2,8 +2,10 @@ FROM phusion/baseimage:0.9.17
 MAINTAINER Dynnamitt
 
 # http://crosbymichael.com/dockerfile-best-practices-take-2.html
+#
+ENV DOCKER_TAG 16_04_22
  
-# git + redis + parallel
+# git + redis + parallel + gawk
 RUN DEBIAN_FRONTEND=noninteractive \
   apt-get update -yy && \
   apt-get install -yy redis-tools git parallel gawk && \
