@@ -3,7 +3,7 @@ MAINTAINER Dynnamitt
 
 # http://crosbymichael.com/dockerfile-best-practices-take-2.html
 #
-ENV DOCKER_TAG 16_04_22
+ENV DOCKER_TAG 16_09_08
  
 # git + redis + parallel + gawk
 RUN DEBIAN_FRONTEND=noninteractive \
