@@ -3,12 +3,12 @@ MAINTAINER Dynnamitt
 
 # http://crosbymichael.com/dockerfile-best-practices-take-2.html
 #
-ENV DOCKER_TAG 16_09_08
+ENV DOCKER_TAG 16_10_10
  
 # git + redis + parallel + gawk
 RUN DEBIAN_FRONTEND=noninteractive \
   apt-get update -yy && \
-  apt-get install -yy redis-tools git parallel gawk && \
+  apt-get install -yy amqp-tools redis-tools git parallel gawk && \
   rm -rf /tmp/* && apt-get clean
 
 # Common ENVs
