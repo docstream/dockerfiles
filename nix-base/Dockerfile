@@ -1,8 +1,8 @@
 FROM phusion/baseimage:0.9.19
 MAINTAINER Dynnamitt
 
-# http://crosbymichael.com/dockerfile-best-practices-take-2.html
-#
+# COMMON runtime for vcs-agent + publisher(:pub)
+
 ENV DOCKER_TAG 16_10_28
  
 # git + redis + parallel + gawk
