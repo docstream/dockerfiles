@@ -1,4 +1,4 @@
-FROM docstream/nix:latest
+FROM docstream/runtime:nix
 MAINTAINER Dynnamitt
 
 ENV REFRESHED_AT 2016-9-8
