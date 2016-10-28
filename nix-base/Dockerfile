@@ -1,9 +1,9 @@
-FROM phusion/baseimage:0.9.17
+FROM phusion/baseimage:0.9.19
 MAINTAINER Dynnamitt
 
 # http://crosbymichael.com/dockerfile-best-practices-take-2.html
 #
-ENV DOCKER_TAG 16_10_10
+ENV DOCKER_TAG 16_10_28
  
 # git + redis + parallel + gawk
 RUN DEBIAN_FRONTEND=noninteractive \
