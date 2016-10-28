@@ -6,7 +6,7 @@ RUN apt-get install -yy software-properties-common && \
       apt-get update -yy && \
       echo "oracle-java7-installer shared/accepted-oracle-license-v1-1 select true" \
       | debconf-set-selections && \
-      apt-get install -yy oracle-java7-installer git && \
+      apt-get install -yy oracle-java7-installer git unzip && \
       rm -rf /tmp/* && apt-get clean
 
 ENV MAVEN_VERSION 3.3.9
