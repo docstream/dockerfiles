@@ -1,9 +1,9 @@
-# old and "safe"
-FROM phusion/baseimage:0.9.17
+# old and "safe",  try 0.9.18 since its last on u14
+FROM phusion/baseimage:0.9.18
 MAINTAINER Dynnamitt
 
 # runtime for vcs-agent
-#  smaller version of :pub image
+#    smaller version of :pub image
 
 ENV REFRESHED_AT 2016-10-31
  
@@ -12,7 +12,7 @@ ENV REFRESHED_AT 2016-10-31
 RUN DEBIAN_FRONTEND=noninteractive \
   apt-get update -yy && \
   apt-get install -yy \
-  sudo amqp-tools curl redis-tools git parallel gawk jq && \
+    sudo amqp-tools curl redis-tools git parallel gawk jq && \
   rm -rf /tmp/* && \
   apt-get clean
 

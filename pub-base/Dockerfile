@@ -1,6 +1,6 @@
 # keep version 0.9.17 >>> libgif and prince must be in SYNC
-# old and "safe"
-FROM phusion/baseimage:0.9.17 
+# old and "safe", try 0.9.18 since its last on u14
+FROM phusion/baseimage:0.9.18 
 
 MAINTAINER Dynnamitt
 
