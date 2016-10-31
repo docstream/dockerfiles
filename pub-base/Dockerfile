@@ -31,9 +31,3 @@ RUN DEBIAN_FRONTEND=noninteractive \
 RUN curl http://www.princexml.com/download/prince_9.0-5_ubuntu14.04_amd64.deb \
     > /tmp/p9.deb && dpkg -i /tmp/p9.deb && rm -rf /tmp/*
 
-COPY . /opt/app/
-
-# supervisor
-CMD ["/sbin/my_init"]
-RUN mkdir /etc/service/publisher
-ADD run.sh /etc/service/publisher/run
