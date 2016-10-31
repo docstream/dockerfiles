@@ -10,7 +10,7 @@ RUN mkdir -p /usr/share/maven \
 
 RUN DEBIAN_FRONTEND=noninteractive \
       apt-get update -yy && \
-      apt-get install -yy openjdk-7-jdk  &&\
+      apt-get install -yy git unzip openjdk-7-jdk  && \
       rm -rf /tmp/* && \
       apt-get clean
 
