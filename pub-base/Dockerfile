@@ -1,16 +1,39 @@
-FROM docstream/runtime:nix
+# keep version 0.9.17 >>> libgif and prince must be in SYNC
+# old and "safe"
+FROM phusion/baseimage:0.9.17 
+
 MAINTAINER Dynnamitt
 
-ENV REFRESHED_AT 2016-10-28
+ENV REFRESHED_AT 2016-10-31
+
+ENV SOLR_POST_URL http://solr:8983/solr/$FQDN/update
+ENV SOLR_QUERY_URL http://solr:8983/solr/_FQDN_/select
+ENV BUILD_DIR /var/build
+
+# FIXME `align' w amqp OR JUST use gitlab-CI !!!
+###ENV REDIS_INTRA_HOST messages
+###ENV REDIS_MAIN_CH ds-events
+###ENV REDIS_PULLED_NS ds-vcs-pulled
 
 # extra tools and PRINCE deps
-# bumped libgit from <4 to 7> --> princexml may be DEAD !
-RUN apt-get install -yy \ 
-      make sudo xsltproc m4 libxml2-utils \
-      libtiff5 libgif7 libfontconfig1 && \
-      rm -rf /tmp/* && apt-get clean
+# line1 is ALMOST common w :nix 
+RUN DEBIAN_FRONTEND=noninteractive \
+      apt-get update -yy && \
+      apt-get install -yy \ 
+      sudo amqp-tools curl redis-tools git parallel gawk \
+      make xsltproc m4 libxml2-utils \
+      libtiff5 libgif4 libfontconfig1 && \
+      rm -rf /tmp/* && \
+      apt-get clean
 
 # prince pack EXTERNAL mess
 # NEED to fit newer UBUNTU someday...
 RUN curl http://www.princexml.com/download/prince_9.0-5_ubuntu14.04_amd64.deb \
-      > /tmp/p9.deb && dpkg -i /tmp/p9.deb && rm -rf /tmp/*
+    > /tmp/p9.deb && dpkg -i /tmp/p9.deb && rm -rf /tmp/*
+
+COPY . /opt/app/
+
+# supervisor
+CMD ["/sbin/my_init"]
+RUN mkdir /etc/service/publisher
+ADD run.sh /etc/service/publisher/run

@@ -1,28 +1,20 @@
-FROM phusion/baseimage:0.9.19
+# old and "safe"
+FROM phusion/baseimage:0.9.17
 MAINTAINER Dynnamitt
 
-# COMMON runtime for vcs-agent + publisher(:pub)
+# runtime for vcs-agent
+#  smaller version of :pub image
 
-ENV DOCKER_TAG 16_10_28
+ENV REFRESHED_AT 2016-10-31
  
-# git + redis + parallel + gawk
+# THE TOOLS !!
+
 RUN DEBIAN_FRONTEND=noninteractive \
   apt-get update -yy && \
-  apt-get install -yy amqp-tools curl redis-tools git parallel gawk && \
-  rm -rf /tmp/* && apt-get clean
-
-# Common ENVs
-ENV VCS_DIR /var/vcs
-ENV BUILD_DIR /var/build
+  apt-get install -yy \
+  sudo amqp-tools curl redis-tools git parallel gawk jq && \
+  rm -rf /tmp/* && \
+  apt-get clean
 
 # sync w globals- in do-ctl
-ENV REDIS_INTRA_HOST messages
-ENV REDIS_MAIN_CH ds-events
-ENV SOLR_POST_URL http://solr:8983/solr/$FQDN/update
-ENV SOLR_QUERY_URL http://solr:8983/solr/_FQDN_/select
-ENV REDIS_PULLED_NS ds-vcs-pulled
 
-# Common
-ONBUILD COPY . /opt/app
-
-WORKDIR /opt/app
