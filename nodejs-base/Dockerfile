@@ -9,6 +9,4 @@ RUN apt-get update &&\
 
 COPY runit_bootstrap /usr/sbin/runit_bootstrap
 
-
-RUN chmod 755 /usr/sbin/runit_bootstrap
 ENTRYPOINT ["/usr/sbin/runit_bootstrap"]
