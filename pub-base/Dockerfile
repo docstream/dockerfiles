@@ -24,7 +24,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
       make xsltproc m4 libxml2-utils \
       libtiff5 libgif4 libfontconfig1 \
       python python-pip && \
-      pip install s3cmd s3cli && apt-get purge -yy python-pip && \
+      pip install s3cmd awscli && apt-get purge -yy python-pip && \
       rm -rf /tmp/* && apt-get clean
 
 
