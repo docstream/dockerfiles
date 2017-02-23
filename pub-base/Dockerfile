@@ -22,9 +22,11 @@ RUN DEBIAN_FRONTEND=noninteractive \
       apt-get install -yy \ 
       sudo amqp-tools curl redis-tools git parallel gawk \
       make xsltproc m4 libxml2-utils \
-      libtiff5 libgif4 libfontconfig1 && \
-      rm -rf /tmp/* && \
-      apt-get clean
+      libtiff5 libgif4 libfontconfig1 \
+      python python-pip && \
+      pip install s3cmd awscli && apt-get purge -yy python-pip && \
+      rm -rf /tmp/* && apt-get clean
+
 
 # prince pack EXTERNAL mess
 # NEED to fit newer UBUNTU someday...
