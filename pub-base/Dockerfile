@@ -22,7 +22,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
       apt-get install -yy \ 
       sudo amqp-tools curl redis-tools git parallel gawk \
       make xsltproc m4 libxml2-utils \
-      libtiff5 libgif4 libfontconfig1 \
+      libtiff5 libgif4 libfontconfig1 wget \
       python python-pip && \
       pip install s3cmd awscli && apt-get purge -yy python-pip && \
       wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 && \
