@@ -25,6 +25,9 @@ RUN DEBIAN_FRONTEND=noninteractive \
       libtiff5 libgif4 libfontconfig1 \
       python python-pip && \
       pip install s3cmd awscli && apt-get purge -yy python-pip && \
+      wget https://github.com/stedolan/jq/releases/download/jq-1.5/jq-linux64 && \
+      chmod +x jq-linux64 && \
+      mv jq-linux64 /usr/bin/jq && \
       rm -rf /tmp/* && apt-get clean
 
 
