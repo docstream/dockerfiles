@@ -19,7 +19,7 @@ ENV BUILD_DIR /var/build
 # line1 is ALMOST common w :nix 
 RUN DEBIAN_FRONTEND=noninteractive \
       apt-get update -yy && \
-      apt-get install -yy \ 
+      apt-get install -yy \
       sudo amqp-tools curl redis-tools git parallel gawk \
       make xsltproc m4 libxml2-utils \
       libtiff5 libgif4 libfontconfig1 wget \
