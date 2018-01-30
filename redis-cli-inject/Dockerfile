@@ -12,4 +12,4 @@ ENV REDIS_HOST redis
 RUN mkdir /app
 COPY ./inject.sh /app/inject.sh
 
-CMD env | egrep 'readin_no[[:digit:]]*=' | xargs -I {} /app/inject.sh {}
+CMD env | egrep 'readin_no_*[[:digit:]]*=' | xargs -I {} /app/inject.sh {}
