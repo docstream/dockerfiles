@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 REDIS_HOST=${REDIS_HOST:-localhost}
 

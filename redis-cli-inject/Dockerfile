@@ -7,6 +7,7 @@ ENV readin_no QUEUE_URL=amqp://user:xx@ip-yy-yy-yy-yy.eu-central-1.compute.inter
 
 ENV REDIS_HOST redis
 
-COPY inject.sh /tmp/inject.sh
+RUN mkdir /app
+COPY ./inject.sh /app/inject.sh
 
-CMD env | egrep 'readin_no=' | xargs /tmp/inject.sh
+CMD env | egrep 'readin_no=' | xargs /app/inject.sh
