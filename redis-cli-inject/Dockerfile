@@ -10,6 +10,6 @@ ENV demo_readin_no_01 PUB_M4_TEMPL=v2_m4_demo.html
 ENV REDIS_HOST redis
 
 RUN mkdir /app
-COPY ./inject.sh /app/inject.sh
+COPY ./hmset-from-env.sh /app/hmset-from-env.sh
 
-CMD env | egrep 'readin_no_*[[:digit:]]*=' | xargs -I {} /app/inject.sh {}
+CMD /app/hmset-from-env.sh
